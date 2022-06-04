@@ -93,6 +93,20 @@ Routes:
             userType: SALESMAN
         DangerousAcceptAnyServerCertificateValidator: true
     -
+        DownstreamPathTemplate: /api/Policies
+        DownstreamScheme: http
+        UpstreamPathTemplate: /api/Policies
+        ServiceName: Microservices.Demo.Policy.API
+        UpstreamHttpMethod: 
+            - Get
+        AuthenticationOptions:
+            AuthenticationProviderKey: ApiSecurityAuthenticationScheme
+#            AllowedScopes:
+#                -
+        RouteClaimsRequirement:
+            userType: SALESMAN
+        DangerousAcceptAnyServerCertificateValidator: true
+    -
         DownstreamPathTemplate: /api/Policies/{number}
         DownstreamScheme: http
         UpstreamPathTemplate: /api/Policies/{number}
@@ -113,6 +127,20 @@ Routes:
         DownstreamScheme: http
         UpstreamPathTemplate: /api/PoliciesSearch
         ServiceName: Microservices.Demo.PolicySearch.API
+        UpstreamHttpMethod: 
+            - Get
+        AuthenticationOptions:
+            AuthenticationProviderKey: ApiSecurityAuthenticationScheme
+#            AllowedScopes:
+#                -      
+        RouteClaimsRequirement: 
+            userType: SALESMAN   
+        DangerousAcceptAnyServerCertificateValidator: true    
+    -
+        DownstreamPathTemplate: /api/Reports
+        DownstreamScheme: http
+        UpstreamPathTemplate: /api/Reports
+        ServiceName: Microservices.Demo.Report.API
         UpstreamHttpMethod: 
             - Get
         AuthenticationOptions:
